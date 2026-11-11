@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
 from pathlib import Path
 import shutil
@@ -70,6 +71,11 @@ def main() -> int:
         )
         if not aar.is_file():
             raise RuntimeError("Research build requires operator-provided Samsung SDK AAR")
+        lock_path = ROOT / "compatibility/watch7-r17.json"
+        expected = json.loads(lock_path.read_text(encoding="utf-8"))[
+            "companion"]["samsung_aar_sha256"]
+        if hashlib.sha256(aar.read_bytes()).hexdigest() != expected:
+            raise RuntimeError("Samsung SDK AAR checksum differs from locked r17 research SDK")
     variant = opts.variant
     task = f":app:assemble{VARIANTS[variant]}Debug"
     log = ROOT / f"build_s4_{variant}.log"

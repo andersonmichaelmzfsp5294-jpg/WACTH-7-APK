@@ -127,6 +127,8 @@ python -B scripts/release_archive.py verify
 **归档安全边界：**源码仓库不保存 Samsung SDK AAR、APK、真实健康数据、
 录音、位置、Wi-Fi/Driver 配对密钥、签名证书或缓存。Research APK
 必须由具备 SDK 授权者自行编译，不以本源码归档代替 SDK 分发权利。
+Research 构建会校验 `compatibility/watch7-r17.json` 锁定的 Samsung AAR SHA-256，
+避免更换 SDK 版本后误以为构建的是同一版本。
 
 **验收边界：**17 张 Card 是软件源码及协议登记数量；截至本归档，
 未证明全部 17 张 Card 真实手表采集、网络、Linux Agent Core 和

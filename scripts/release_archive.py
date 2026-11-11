@@ -150,6 +150,7 @@ def create() -> None:
         "source_zip_sha256": sha256(archive),
         "git_bundle": bundle.name,
         "git_bundle_sha256": sha256(bundle),
+        "samsung_sdk_aar_sha256_expected": lock["companion"]["samsung_aar_sha256"],
         "contains_samsung_sdk_binary": False,
         "contains_device_credentials": False,
         "hardware_verified": False,
@@ -178,6 +179,8 @@ def verify() -> None:
         lock = json.loads(zf.read("compatibility/watch7-r17.json"))
         if lock["driver"]["commit"] != manifest["driver_commit"]:
             raise RuntimeError("Driver SHA mismatch")
+        if lock["companion"]["samsung_aar_sha256"] != manifest["samsung_sdk_aar_sha256_expected"]:
+            raise RuntimeError("Samsung SDK AAR lock mismatch")
     if manifest["companion_commit"] != git("rev-parse", "HEAD").decode().strip():
         raise RuntimeError("Companion Git SHA mismatch")
     git("bundle", "verify", str(bundle))

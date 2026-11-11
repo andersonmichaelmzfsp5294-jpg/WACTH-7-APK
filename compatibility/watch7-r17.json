@@ -32,7 +32,8 @@
     "android_gradle_plugin": "8.13.0",
     "kotlin_plugin": "2.2.20",
     "samsung_aar_path_relative_to_companion": "../research/watch-capability-probe/app/libs/samsung-health-sensor-api.aar",
-    "samsung_aar_distribution": "never bundled, license holder must supply separately"
+    "samsung_aar_distribution": "never bundled, license holder must supply separately",
+    "samsung_aar_sha256": "893cd5d6564db0f304bf511a555c1d65ca6bccc8475fc979ff1d71d50680344c"
   },
   "data_protocols": [
     "v1",
