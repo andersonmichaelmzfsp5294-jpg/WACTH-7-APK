@@ -121,8 +121,10 @@ def sha256(path: Path) -> str:
 
 def create() -> None:
     tracked = audit()
-    if git("status", "--porcelain").strip():
-        raise RuntimeError("Commit all source edits before creating a release")
+    # Source archive includes *tracked* files only. Untracked legacy tools and
+    # generated files are excluded; tracked edits must be committed first.
+    if git("status", "--porcelain", "--untracked-files=no").strip():
+        raise RuntimeError("Commit all tracked source edits before creating a release")
     revision = git("rev-parse", "HEAD").decode().strip()
     tree = git("rev-parse", "HEAD^{tree}").decode().strip()
     archive, bundle, meta = outputs()
