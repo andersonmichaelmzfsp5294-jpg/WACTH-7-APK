@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "release_id": "watch7-r17-source-20261111",
+  "title": "Watch7 Companion Standard + Research source for 17-card Driver",
+  "driver": {
+    "repository": "andersonmichaelmzfsp5294-jpg/phanthymotus-driver",
+    "commit": "666d48552cb36b6526e8090ff5fd9a52c24344f8",
+    "path": "samsung/watch7",
+    "card_count": 17
+  },
+  "companion": {
+    "repository_suggested": "watch7-companion",
+    "git_ref": "watch7-r17-source-20261111",
+    "variants": [
+      {
+        "flavor": "standard",
+        "application_id": "com.phanthymotus.watch7",
+        "version_name": "0.2.0-standard",
+        "requires_samsung_aar": false
+      },
+      {
+        "flavor": "research",
+        "application_id": "com.example.heartrateweartest",
+        "version_name": "0.2.0-research",
+        "requires_samsung_aar": true
+      }
+    ],
+    "version_code": 2,
+    "android_compile_sdk": 36,
+    "jdk_major": 17,
+    "gradle_version": "8.13",
+    "android_gradle_plugin": "8.13.0",
+    "kotlin_plugin": "2.2.20",
+    "samsung_aar_path_relative_to_companion": "../research/watch-capability-probe/app/libs/samsung-health-sensor-api.aar",
+    "samsung_aar_distribution": "never bundled, license holder must supply separately"
+  },
+  "data_protocols": [
+    "v1",
+    "v2",
+    "v3"
+  ],
+  "release_status": "source-archive; physical Watch7 and Agent Core E2E incomplete",
+  "validation": {
+    "driver_pytest": "80 passed (synthetic + contract tests)",
+    "research_apk_build": "offline compile succeeded (locally), not redistributed"
+  }
+}

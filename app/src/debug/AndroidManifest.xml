@@ -1,0 +1,4 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Local interview demo only; production must use HTTPS/TLS. -->
+    <application android:usesCleartextTraffic="true" />
+</manifest>
